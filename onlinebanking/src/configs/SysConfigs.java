@@ -14,6 +14,6 @@ public class SysConfigs {
 	public static final String db_Driver = "com.mysql.jdbc.Driver";
 	public static final String db_ConnectionString = "jdbc:mysql://localhost:3306/team6a_banking";
 	public static final String db_Username = "root";
-	public static final String db_Password = "root";
+	public static final String db_Password = "admin";
 
 }

@@ -50,8 +50,15 @@ public class AccountServiceImpl implements AccountService{
 		Connection connection = DBConnectionHelper.getConnection();
 		try 
 		{
-			return accountDAO.loadAll(connection);
-		} catch (SQLException e) {
+			List<Account> data = accountDAO.loadAll(connection);
+			for(Account account : data)
+			{
+				account.setBank_branch(bankBranchDAO.getObject(connection,account.getBank_branch_id()));
+				account.setAccount_type(accountTypeDAO.getObject(connection, account.getAccount_typeId()));
+			}
+			
+			return data;
+		} catch (SQLException | NotFoundException e) {
 			e.printStackTrace();
 		} finally {
 			try {

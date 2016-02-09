@@ -42,7 +42,7 @@
 			<td><input name="password" type="password" required="required" /></td>
 		</tr>
 		<tr>
-			<td>Given Name</td>
+			<td>Full Name</td>
 			<td><input value="${data.givenname}" name="givenname" autocomplete="off"
 				type="text" required="required" placeholder="Given Name" /></td>
 		</tr>
@@ -53,8 +53,8 @@
 		</tr>
 		<tr>
 			<td>Gender</td>
-			<td><input type="radio" name="gender" value="Male">&nbsp;Male
-				&nbsp; <input type="radio" name="gender" value="Female">&nbsp;Female
+			<td><input type="radio" name="gender" value="Male" <c:if test="${data.gender=='Male'}">checked</c:if>>&nbsp;Male
+				&nbsp; <input type="radio" name="gender" value="Female" <c:if test="${data.gender=='Female'}">checked</c:if>>&nbsp;Female
 			</td>
 		</tr>
 		<tr>
@@ -338,8 +338,7 @@
 		
 		<tr>
 			<td>Date of Birth</td>
-			<td><input name="date_of_birth" value=""
-				id="date_of_birth" type="text" required="required" placeholder="" /></td>
+			<td><input name="date_of_birth" value='<fmt:formatDate value="${data.date_of_birth}" pattern="MM/d/yyyy"/>' id="date_of_birth" type="text" required="required" placeholder="" /></td>
 		</tr>
 		<tr>
 			<td>Date of Join</td>

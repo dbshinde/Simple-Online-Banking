@@ -1,13 +1,10 @@
 package models;
 
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import java.io.Serializable;
 
 public class BankBranch implements Cloneable, Serializable {
 
-	private int bank_branch_id;
+	private Integer bank_branch_id;
 	private String name;
 	private String location;
 	private String description;
@@ -22,11 +19,11 @@ public class BankBranch implements Cloneable, Serializable {
 
 	}
 
-	public int getBank_branch_id() {
+	public Integer getBank_branch_id() {
 		return this.bank_branch_id;
 	}
 
-	public void setBank_branch_id(int bank_branch_idIn) {
+	public void setBank_branch_id(Integer bank_branch_idIn) {
 		this.bank_branch_id = bank_branch_idIn;
 	}
 

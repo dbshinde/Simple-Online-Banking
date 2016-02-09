@@ -4,15 +4,13 @@ package front_controllers;
 import helpers.AuthenticationHelper;
 import helpers.DBConnectionHelper;
 import helpers.HttpHelper;
+import helpers.Utils;
 import helpers.ValidationHelper;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -359,12 +357,10 @@ public class AdminController{
 					Connection connection = DBConnectionHelper.getConnection();
 					Customer customer = new Customer();
 					//customer.setCustomer_id(Integer.parseInt(request.getParameter("customer_id")));
-					SimpleDateFormat datetimeFormatter1 = new SimpleDateFormat("mm/dd/yyyy");
-					try {
-						Date lFromDate1 = datetimeFormatter1.parse(request
-								.getParameter("date_of_birth"));
-						Timestamp fromTS1 = new Timestamp(lFromDate1.getTime());
-						customer.setDate_of_birth(fromTS1);
+					try 
+					{
+						customer.setDate_of_birth(Utils.getDateTimeStamp(request.getParameter("date_of_birth")));
+						
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}

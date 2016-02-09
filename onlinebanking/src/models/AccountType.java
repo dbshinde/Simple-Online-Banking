@@ -1,17 +1,16 @@
 package models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class AccountType implements Cloneable, Serializable {
 
-    private int account_typeId;
+    private Integer account_typeId;
     private String account_type;
     private String status;
-	public int getAccount_typeId() {
+	public Integer getAccount_typeId() {
 		return account_typeId;
 	}
-	public void setAccount_typeId(int account_typeId) {
+	public void setAccount_typeId(Integer account_typeId) {
 		this.account_typeId = account_typeId;
 	}
 	public String getAccount_type() {

@@ -1,43 +1,40 @@
 package models;
 
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import java.io.Serializable;
 
 
 public class MapAccountCustomer implements Cloneable, Serializable {
 
-    private int map_id;
-    private int account_id;
-    private int customer_id;
+    private Integer map_id;
+    private Integer account_id;
+    private Integer customer_id;
 
     public MapAccountCustomer () {
 
     }
 
-    public MapAccountCustomer (int map_idIn) {
+    public MapAccountCustomer (Integer map_idIn) {
     	this.map_id = map_idIn;
     }
 
-    public int getMap_id() {
+    public Integer getMap_id() {
           return this.map_id;
     }
-    public void setMap_id(int map_idIn) {
+    public void setMap_id(Integer map_idIn) {
           this.map_id = map_idIn;
     }
 
-    public int getAccount_id() {
+    public Integer getAccount_id() {
           return this.account_id;
     }
-    public void setAccount_id(int account_idIn) {
+    public void setAccount_id(Integer account_idIn) {
           this.account_id = account_idIn;
     }
 
-    public int getCustomer_id() {
+    public Integer getCustomer_id() {
           return this.customer_id;
     }
-    public void setCustomer_id(int customer_idIn) {
+    public void setCustomer_id(Integer customer_idIn) {
           this.customer_id = customer_idIn;
     }
 

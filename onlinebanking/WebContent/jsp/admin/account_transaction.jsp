@@ -7,7 +7,7 @@
 		<tr>
 			<td>Transaction Time</td>
 			<td>Amount</td>
-			<td>Type</td>
+			<td>Transaction Details</td>
 		</tr>
 	</thead>
 	<tbody>

@@ -5,11 +5,11 @@ import java.sql.Timestamp;
 
 public class Transaction implements Cloneable, Serializable {
 
-	private int transaction_id;
-	private int customer_id_by;
-	private int account_id;
-	private int account_id_to;
-	private int transaction_type;
+	private Integer transaction_id;
+	private Integer customer_id_by;
+	private Integer account_id;
+	private Integer account_id_to;
+	private Integer transaction_type;
 	private double transaction_amount;
 	private Timestamp transaction_time;
 
@@ -17,48 +17,48 @@ public class Transaction implements Cloneable, Serializable {
 
 	}
 
-	public Transaction(int transaction_idIn) {
+	public Transaction(Integer transaction_idIn) {
 
 		this.transaction_id = transaction_idIn;
 	}
 
-	public int getTransaction_id() {
+	public Integer getTransaction_id() {
 		return this.transaction_id;
 	}
 
-	public void setTransaction_id(int transaction_idIn) {
+	public void setTransaction_id(Integer transaction_idIn) {
 		this.transaction_id = transaction_idIn;
 	}
 
-	public int getCustomer_id_by() {
+	public Integer getCustomer_id_by() {
 		return this.customer_id_by;
 	}
 
-	public void setCustomer_id_by(int customer_id_byIn) {
+	public void setCustomer_id_by(Integer customer_id_byIn) {
 		this.customer_id_by = customer_id_byIn;
 	}
 
-	public int getAccount_id() {
+	public Integer getAccount_id() {
 		return this.account_id;
 	}
 
-	public void setAccount_id(int account_idIn) {
+	public void setAccount_id(Integer account_idIn) {
 		this.account_id = account_idIn;
 	}
 
-	public int getAccount_id_to() {
+	public Integer getAccount_id_to() {
 		return this.account_id_to;
 	}
 
-	public void setAccount_id_to(int account_id_toIn) {
+	public void setAccount_id_to(Integer account_id_toIn) {
 		this.account_id_to = account_id_toIn;
 	}
 
-	public int getTransaction_type() {
+	public Integer getTransaction_type() {
 		return this.transaction_type;
 	}
 
-	public void setTransaction_type(int transaction_typeIn) {
+	public void setTransaction_type(Integer transaction_typeIn) {
 		this.transaction_type = transaction_typeIn;
 	}
 
@@ -85,8 +85,8 @@ public class Transaction implements Cloneable, Serializable {
 	 * variales, without going trough the individual set-methods.
 	 */
 
-	public void setAll(int transaction_idIn, int customer_id_byIn,
-			int account_idIn, int account_id_toIn, int transaction_typeIn,
+	public void setAll(Integer transaction_idIn, Integer customer_id_byIn,
+			Integer account_idIn, Integer account_id_toIn, Integer transaction_typeIn,
 			double transaction_amountIn, Timestamp transaction_timeIn) {
 		this.transaction_id = transaction_idIn;
 		this.customer_id_by = customer_id_byIn;

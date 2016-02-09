@@ -15,6 +15,6 @@
 					<option
 						<c:if test="${data.account_typeId == 2}">selected="selected"</c:if>
 						value="2">Saving Account</option>
-			</select>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<button type="submit" class="btn btn-primary">Search</button>
 </form>

@@ -11,7 +11,7 @@ import java.util.List;
 import models.Account;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+import static helpers.Utils.isNotNullAndEmpty;
 
 import exceptions.NotFoundException;
 
@@ -335,27 +335,27 @@ public class AccountDAOImpl implements AccountDAO{
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM account WHERE 1=1 ");
 
-          if (valueObject.getAccount_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getAccount_id()) && valueObject.getAccount_id() != 0) {
               if (first) { first = false; }
               sql.append("AND account_id = ").append(valueObject.getAccount_id()).append(" ");
           }
 
-          if (valueObject.getPin() != 0) {
-              if (first) { first = false; }
+          if (isNotNullAndEmpty(valueObject.getPin()) && valueObject.getPin() != 0) {
+               if (first) { first = false; }
               sql.append("AND pin = ").append(valueObject.getPin()).append(" ");
           }
 
-          if (valueObject.getAmount() != 0) {
+          if (isNotNullAndEmpty(valueObject.getAmount()) && valueObject.getAmount() != 0) {
               if (first) { first = false; }
               sql.append("AND amount = ").append(valueObject.getAmount()).append(" ");
           }
 
-          if (valueObject.getAccount_typeId() != 0) {
+          if (isNotNullAndEmpty(valueObject.getAccount_typeId()) && valueObject.getAccount_typeId() != 0) {
               if (first) { first = false; }
               sql.append("AND account_type = ").append(valueObject.getAccount_typeId()).append(" ");
           }
 
-          if (valueObject.getBank_branch_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getBank_branch_id()) && valueObject.getBank_branch_id() != 0) {
               if (first) { first = false; }
               sql.append("AND bank_branch_id = ").append(valueObject.getBank_branch_id()).append(" ");
           }

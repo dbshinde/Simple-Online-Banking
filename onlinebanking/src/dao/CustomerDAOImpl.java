@@ -1,13 +1,19 @@
 package dao;
 
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import static helpers.Utils.isNotNullAndEmpty;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.Customer;
 
 import org.springframework.stereotype.Component;
 
 import exceptions.NotFoundException;
-import models.Customer;
 
 
  /**
@@ -333,52 +339,52 @@ public class CustomerDAOImpl implements CustomerDAO{
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM customer WHERE 1=1 ");
 
-          if (valueObject.getCustomer_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getCustomer_id()) && valueObject.getCustomer_id() != 0) {
               if (first) { first = false; }
               sql.append("AND customer_id = ").append(valueObject.getCustomer_id()).append(" ");
           }
 
-          if (valueObject.getNric() != null) {
+          if (isNotNullAndEmpty(valueObject.getNric()) && valueObject.getNric() != null) {
               if (first) { first = false; }
               sql.append("AND nric LIKE '").append(valueObject.getNric()).append("%' ");
           }
 
-          if (valueObject.getUsername() != null) {
+          if (isNotNullAndEmpty(valueObject.getUsername()) && valueObject.getUsername() != null) {
               if (first) { first = false; }
               sql.append("AND username LIKE '").append(valueObject.getUsername()).append("%' ");
           }
 
-          if (valueObject.getPassword() != null) {
+          if (isNotNullAndEmpty(valueObject.getPassword()) && valueObject.getPassword() != null) {
               if (first) { first = false; }
               sql.append("AND password LIKE '").append(valueObject.getPassword()).append("%' ");
           }
 
-          if (valueObject.getGivenname() != null) {
+          if (isNotNullAndEmpty(valueObject.getGivenname()) && valueObject.getGivenname() != null) {
               if (first) { first = false; }
               sql.append("AND givenname LIKE '").append(valueObject.getGivenname()).append("%' ");
           }
 
-          if (valueObject.getAddress() != null) {
+          if (isNotNullAndEmpty(valueObject.getAddress()) && valueObject.getAddress() != null) {
               if (first) { first = false; }
               sql.append("AND address LIKE '").append(valueObject.getAddress()).append("%' ");
           }
 
-          if (valueObject.getGender() != null) {
+          if (isNotNullAndEmpty(valueObject.getGender()) && valueObject.getGender() != null) {
               if (first) { first = false; }
               sql.append("AND gender LIKE '").append(valueObject.getGender()).append("%' ");
           }
 
-          if (valueObject.getNationality() != null) {
+          if (isNotNullAndEmpty(valueObject.getNationality()) && valueObject.getNationality() != null) {
               if (first) { first = false; }
               sql.append("AND nationality LIKE '").append(valueObject.getNationality()).append("%' ");
           }
 
-          if (valueObject.getDate_of_birth() != null) {
+          if (isNotNullAndEmpty(valueObject.getDate_of_birth()) && valueObject.getDate_of_birth() != null) {
               if (first) { first = false; }
               sql.append("AND date_of_birth = '").append(valueObject.getDate_of_birth()).append("' ");
           }
 
-          if (valueObject.getDate_of_join() != null) {
+          if (isNotNullAndEmpty(valueObject.getDate_of_join()) && valueObject.getDate_of_join() != null) {
               if (first) { first = false; }
               sql.append("AND date_of_join = '").append(valueObject.getDate_of_join()).append("' ");
           }

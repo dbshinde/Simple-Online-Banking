@@ -21,14 +21,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import configs.SysConfigs;
-import dao.CustomerDAO;
+import dao.CustomerDAOImpl;
 import exceptions.NotFoundException;
 
 @Component
 public class HttpHelper {
 
 	private static @Autowired HttpServletRequest request;
-	private static @Autowired CustomerDAO customerDAO;
 	
 	public synchronized static HashMap<String, String> analyseRequest( HttpServletRequest request) {
 
@@ -77,6 +76,7 @@ public class HttpHelper {
 			Connection connection = DBConnectionHelper.getConnection();
 			try 
 			{
+				CustomerDAOImpl customerDAO = new CustomerDAOImpl();
 				Customer oldCustomerData = customerDAO.getObject(connection, Integer.parseInt(request.getParameter("customer_id")));
 				customer.setDate_of_join(oldCustomerData.getDate_of_join());
 			} catch (NumberFormatException e) {
@@ -97,12 +97,9 @@ public class HttpHelper {
 		customer.setGender(request.getParameter("gender"));
 		customer.setNationality(request.getParameter("nationality"));
 
-		SimpleDateFormat datetimeFormatter1 = new SimpleDateFormat("mm/dd/yyyy");
 		try 
 		{
-			Date lFromDate1 = datetimeFormatter1.parse(request.getParameter("date_of_birth"));
-			Timestamp fromTS1 = new Timestamp(lFromDate1.getTime());
-			customer.setDate_of_birth(fromTS1);
+			customer.setDate_of_birth(Utils.getDateTimeStamp(request.getParameter("date_of_birth")));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

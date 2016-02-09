@@ -1,9 +1,9 @@
 package models;
 
-import java.io.*;
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Customer Value Object.
@@ -35,7 +35,7 @@ public class Customer implements Cloneable, Serializable {
 	 * Persistent Instance variables. This data is directly mapped to the
 	 * columns of database table.
 	 */
-	private int customer_id;
+	private Integer customer_id;
 	private String nric;
 	private String username;
 	private String password;
@@ -71,7 +71,7 @@ public class Customer implements Cloneable, Serializable {
 		accounts = new ArrayList<Account>();
 	}
 
-	public Customer(int customer_idIn) {
+	public Customer(Integer customer_idIn) {
 
 		this.customer_id = customer_idIn;
 
@@ -83,11 +83,11 @@ public class Customer implements Cloneable, Serializable {
 	 * manual additions.
 	 */
 
-	public int getCustomer_id() {
+	public Integer getCustomer_id() {
 		return this.customer_id;
 	}
 
-	public void setCustomer_id(int customer_idIn) {
+	public void setCustomer_id(Integer customer_idIn) {
 		this.customer_id = customer_idIn;
 	}
 
@@ -170,7 +170,7 @@ public class Customer implements Cloneable, Serializable {
 	 * variales, without going trough the individual set-methods.
 	 */
 
-	public void setAll(int customer_idIn, String nricIn, String usernameIn,
+	public void setAll(Integer customer_idIn, String nricIn, String usernameIn,
 			String passwordIn, String givennameIn, String addressIn,
 			String genderIn, String nationalityIn, Timestamp date_of_birthIn,
 			Timestamp date_of_joinIn) {

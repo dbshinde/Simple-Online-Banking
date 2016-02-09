@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Account implements Cloneable, Serializable {
 
-    private int account_id;
-    private int pin;
+    private Integer account_id;
+    private Integer pin;
     private double amount;
-    private int account_typeId; //1 checking //2 saving
-    private int bank_branch_id;
+    private Integer account_typeId; //1 checking //2 saving
+    private Integer bank_branch_id;
     private AccountType account_type; //1 checking //2 saving
    	private ArrayList<Customer> customers;
     private BankBranch bank_branch;
@@ -48,21 +48,21 @@ public class Account implements Cloneable, Serializable {
     	customers = new ArrayList<Customer>();
     }
 
-    public Account (int account_idIn) {
+    public Account (Integer account_idIn) {
     	this.account_id = account_idIn;
     }
 
-    public int getAccount_id() {
+    public Integer getAccount_id() {
           return this.account_id;
     }
-    public void setAccount_id(int account_idIn) {
+    public void setAccount_id(Integer account_idIn) {
           this.account_id = account_idIn;
     }
 
-    public int getPin() {
+    public Integer getPin() {
           return this.pin;
     }
-    public void setPin(int pinIn) {
+    public void setPin(Integer pinIn) {
           this.pin = pinIn;
     }
 
@@ -73,10 +73,10 @@ public class Account implements Cloneable, Serializable {
           this.amount = f;
     }
 
-    public int getAccount_typeId() {
+    public Integer getAccount_typeId() {
           return this.account_typeId;
     }
-    public void setAccount_typeId(int account_typeIn) {
+    public void setAccount_typeId(Integer account_typeIn) {
           this.account_typeId = account_typeIn;
     }
 
@@ -88,18 +88,18 @@ public class Account implements Cloneable, Serializable {
 		this.account_type = account_type;
 	}
 
-	public int getBank_branch_id() {
+	public Integer getBank_branch_id() {
           return this.bank_branch_id;
     }
-    public void setBank_branch_id(int bank_branch_idIn) {
+    public void setBank_branch_id(Integer bank_branch_idIn) {
           this.bank_branch_id = bank_branch_idIn;
     }
 
-    public void setAll(int account_idIn,
-          int pinIn,
+    public void setAll(Integer account_idIn,
+          Integer pinIn,
           long amountIn,
-          int account_typeIn,
-          int bank_branch_idIn) {
+          Integer account_typeIn,
+          Integer bank_branch_idIn) {
           this.account_id = account_idIn;
           this.pin = pinIn;
           this.amount = amountIn;
