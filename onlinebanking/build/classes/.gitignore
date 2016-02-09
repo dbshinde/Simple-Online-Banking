@@ -1,0 +1,11 @@
+/.DS_Store
+/business_logic/
+/configs/
+/dao/
+/en.properties
+/enums/
+/exceptions/
+/front_controllers/
+/helpers/
+/models/
+/utils/
