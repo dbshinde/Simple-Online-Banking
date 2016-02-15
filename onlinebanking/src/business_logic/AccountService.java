@@ -1,7 +1,10 @@
 package business_logic;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import utils.ChangesStatus;
 import exceptions.BelowMinimumBalanceException;
@@ -15,6 +18,7 @@ import models.MapAccountCustomer;
 public interface AccountService {
 
 	List<Account> getAccounts();
+	List<Account> searchAccounts(HttpServletRequest request) throws SQLException;
 	Account getAccount(int account_id) throws NotFoundException;
 	Account getAccountDetails(int account_id) throws NotFoundException;
 	ChangesStatus depositMoney(int account_id, int customer_id_by,double amount, int pin);

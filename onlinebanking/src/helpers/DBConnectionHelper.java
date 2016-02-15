@@ -29,10 +29,9 @@ public class DBConnectionHelper {
 			e.printStackTrace();
 		}
 
-		try {
-			dbConnection = DriverManager.getConnection(
-					SysConfigs.db_ConnectionString, SysConfigs.db_Username,
-					SysConfigs.db_Password);
+		try 
+		{
+			dbConnection = DriverManager.getConnection(SysConfigs.db_ConnectionString, SysConfigs.db_Username,SysConfigs.db_Password);
 			dbConnection.setAutoCommit(false);
 
 			return dbConnection;

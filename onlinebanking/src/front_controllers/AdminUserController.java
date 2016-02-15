@@ -1,16 +1,11 @@
 package front_controllers;
 
 
-import static helpers.Utils.isNotNullAndEmpty;
 import helpers.AuthenticationHelper;
-import helpers.DBConnectionHelper;
 import helpers.HttpHelper;
-import helpers.Utils;
 import helpers.ValidationHelper;
 
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -405,20 +400,7 @@ public class AdminUserController{
 				case SEARCH_CUSTOMER : {
 					try 
 					{
-						Connection connection = DBConnectionHelper.getConnection();
-						Customer customer = new Customer();
-						customer.setCustomer_id(isNotNullAndEmpty(request.getParameter("customer_id")) ? Integer.parseInt(request.getParameter("customer_id")) : null);
-						if(isNotNullAndEmpty(request.getParameter("date_of_birth")))
-						{
-							try 
-							{
-								customer.setDate_of_birth(Utils.getDateTimeStamp(request.getParameter("date_of_birth")));
-							} catch (ParseException e) {
-								e.printStackTrace();
-							}
-						}
-						
-						List<Customer> customerList = customerDAO.searchMatching(connection,customer);
+						List<Customer> customerList = customerService.searchCustomers(request);
 						model.addAttribute("data", customerList);
 						page.setPage_title("List Customer");
 						page.setViewFile("admin/customer_list.jsp");
@@ -434,11 +416,7 @@ public class AdminUserController{
 				case SEARCH_ACCOUNT : {
 					try 
 					{
-						Connection connection = DBConnectionHelper.getConnection();
-						Account account = new Account();
-						account.setAccount_id(isNotNullAndEmpty(request.getParameter("account_id")) ?Integer.parseInt(request.getParameter("account_id")) : null);
-						account.setAccount_typeId(isNotNullAndEmpty(request.getParameter("account_typeId")) ? Integer.parseInt(request.getParameter("account_typeId")) : null);
-						List<Account> accountList = accountDAO.searchMatching(connection,account);
+						List<Account> accountList = accountService.searchAccounts(request);
 						model.addAttribute("data", accountList);
 						page.setPage_title("List Accounts");
 						page.setViewFile("admin/account_list.jsp");

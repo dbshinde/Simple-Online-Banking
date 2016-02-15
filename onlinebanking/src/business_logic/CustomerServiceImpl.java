@@ -1,10 +1,15 @@
 package business_logic;
 
+import static helpers.Utils.isNotNullAndEmpty;
 import helpers.DBConnectionHelper;
+import helpers.Utils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import models.Customer;
 import models.MapAccountCustomer;
@@ -45,6 +50,26 @@ public class CustomerServiceImpl implements CustomerService{
 		return null;
 	}
 
+	public List<Customer> searchCustomers(HttpServletRequest request) throws SQLException 
+	{
+		Connection connection = DBConnectionHelper.getConnection();
+		Customer customer = new Customer();
+		customer.setCustomer_id(isNotNullAndEmpty(request.getParameter("customer_id")) ? Integer.parseInt(request.getParameter("customer_id")) : null);
+		if(isNotNullAndEmpty(request.getParameter("date_of_birth")))
+		{
+			try 
+			{
+				customer.setDate_of_birth(Utils.getDateTimeStamp(request.getParameter("date_of_birth")));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		List<Customer> customerList = customerDAO.searchMatching(connection,customer);
+		return customerList;
+	}
+	
+	
 	public Customer getCustomer(int customer_id) throws NotFoundException,
 			SQLException {
 		

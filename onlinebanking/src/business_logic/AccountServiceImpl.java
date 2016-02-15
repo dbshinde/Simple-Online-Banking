@@ -1,5 +1,6 @@
 package business_logic;
 
+import static helpers.Utils.isNotNullAndEmpty;
 import helpers.DBConnectionHelper;
 import helpers.PermissionHelper;
 
@@ -9,6 +10,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import models.Account;
 import models.MapAccountCustomer;
@@ -69,6 +72,30 @@ public class AccountServiceImpl implements AccountService{
 		}
 		return null;
 	}
+	
+	public List<Account> searchAccounts(HttpServletRequest request) throws SQLException 
+	{
+		Connection connection = DBConnectionHelper.getConnection();
+		Account account = new Account();
+		account.setAccount_id(isNotNullAndEmpty(request.getParameter("account_id")) ?Integer.parseInt(request.getParameter("account_id")) : null);
+		account.setAccount_typeId(isNotNullAndEmpty(request.getParameter("account_typeId")) ? Integer.parseInt(request.getParameter("account_typeId")) : null);
+		List<Account> accountList = accountDAO.searchMatching(connection,account);
+		try 
+		{
+			for(Account acc : accountList)
+			{
+				acc.setBank_branch(bankBranchDAO.getObject(connection,acc.getBank_branch_id()));
+				acc.setAccount_type(accountTypeDAO.getObject(connection, acc.getAccount_typeId()));
+			}
+		}
+		catch (SQLException | NotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return accountList;
+	}
+	
+	
 	public Account getAccount(int account_id) throws NotFoundException 
 	{
 		Account account = new Account();

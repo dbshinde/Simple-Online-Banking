@@ -1,13 +1,19 @@
 package dao;
 
-import java.sql.*;
-import java.util.*;
-import java.math.*;
+import static helpers.Utils.isNotNullAndEmpty;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.MapAccountCustomer;
 
 import org.springframework.stereotype.Component;
 
 import exceptions.NotFoundException;
-import models.MapAccountCustomer;
 
 
  /**
@@ -314,17 +320,17 @@ public class MapAccountCustomerDAOImpl implements MapAccountCustomerDAO{
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM map_account_customer WHERE 1=1 ");
 
-          if (valueObject.getMap_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getMap_id()) && valueObject.getMap_id() != 0) {
               if (first) { first = false; }
               sql.append("AND map_id = ").append(valueObject.getMap_id()).append(" ");
           }
 
-          if (valueObject.getAccount_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getAccount_id()) && valueObject.getAccount_id() != 0) {
               if (first) { first = false; }
               sql.append("AND account_id = ").append(valueObject.getAccount_id()).append(" ");
           }
 
-          if (valueObject.getCustomer_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getCustomer_id()) && valueObject.getCustomer_id() != 0) {
               if (first) { first = false; }
               sql.append("AND customer_id = ").append(valueObject.getCustomer_id()).append(" ");
           }
