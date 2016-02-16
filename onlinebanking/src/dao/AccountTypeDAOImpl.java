@@ -111,10 +111,10 @@ public class AccountTypeDAOImpl implements AccountTypeDAO{
      *
      * @param conn         This method requires working database connection.
      */
-    public List loadAll(Connection conn) throws SQLException {
+    public List<AccountType> loadAll(Connection conn) throws SQLException {
 
           String sql = "SELECT * FROM account_type ORDER BY account_typeId ASC ";
-          List searchResults = listQuery(conn, conn.prepareStatement(sql));
+          List<AccountType> searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
     }
@@ -132,9 +132,9 @@ public class AccountTypeDAOImpl implements AccountTypeDAO{
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Connection conn, AccountType valueObject) throws SQLException {
+    public List<AccountType> searchMatching(Connection conn, AccountType valueObject) throws SQLException {
 
-          List searchResults;
+          List<AccountType> searchResults;
 
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM account_type WHERE 1=1 ");
@@ -149,7 +149,7 @@ public class AccountTypeDAOImpl implements AccountTypeDAO{
           // Prevent accidential full table results.
           // Use loadAll if all rows must be returned.
           if (first)
-               searchResults = new ArrayList();
+               searchResults = new ArrayList<AccountType>();
           else
                searchResults = listQuery(conn, conn.prepareStatement(sql.toString()));
 
@@ -227,9 +227,9 @@ public class AccountTypeDAOImpl implements AccountTypeDAO{
      * @param conn         This method requires working database connection.
      * @param stmt         This parameter contains the SQL statement to be excuted.
      */
-    public List listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
+    public List<AccountType> listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
 
-          ArrayList searchResults = new ArrayList();
+          List<AccountType> searchResults = new ArrayList<AccountType>();
           ResultSet result = null;
 
           try {
@@ -249,7 +249,7 @@ public class AccountTypeDAOImpl implements AccountTypeDAO{
                   stmt.close();
           }
 
-          return (List)searchResults;
+          return searchResults;
     }
 
 }

@@ -113,10 +113,10 @@ public class CustomerDAOImpl implements CustomerDAO{
      *
      * @param conn         This method requires working database connection.
      */
-    public List loadAll(Connection conn) throws SQLException {
+    public List<Customer> loadAll(Connection conn) throws SQLException {
 
           String sql = "SELECT * FROM customer ORDER BY customer_id ASC ";
-          List searchResults = listQuery(conn, conn.prepareStatement(sql));
+          List<Customer> searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
     }
@@ -332,9 +332,9 @@ public class CustomerDAOImpl implements CustomerDAO{
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Connection conn, Customer valueObject) throws SQLException {
+    public List<Customer> searchMatching(Connection conn, Customer valueObject) throws SQLException {
 
-          List searchResults;
+          List<Customer> searchResults;
 
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM customer WHERE 1=1 ");
@@ -395,7 +395,7 @@ public class CustomerDAOImpl implements CustomerDAO{
           // Prevent accidential full table results.
           // Use loadAll if all rows must be returned.
           if (first)
-               searchResults = new ArrayList();
+               searchResults = new ArrayList<Customer>();
           else
                searchResults = listQuery(conn, conn.prepareStatement(sql.toString()));
 
@@ -480,9 +480,9 @@ public class CustomerDAOImpl implements CustomerDAO{
      * @param conn         This method requires working database connection.
      * @param stmt         This parameter contains the SQL statement to be excuted.
      */
-    public List listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
+    public List<Customer> listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
 
-          ArrayList searchResults = new ArrayList();
+          List<Customer> searchResults = new ArrayList<Customer>();
           ResultSet result = null;
 
           try {
@@ -512,7 +512,7 @@ public class CustomerDAOImpl implements CustomerDAO{
                   stmt.close();
           }
 
-          return (List)searchResults;
+          return searchResults;
     }
 
 

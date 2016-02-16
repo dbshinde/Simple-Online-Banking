@@ -13,14 +13,14 @@ public interface AccountDAO{
     public Account createValueObject();
     public Account getObject(Connection conn, int account_id) throws NotFoundException, SQLException;
     public void load(Connection conn, Account valueObject) throws NotFoundException, SQLException;
-    public List loadAll(Connection conn) throws SQLException;
+    public List<Account> loadAll(Connection conn) throws SQLException;
     public void create(Connection conn, Account valueObject) throws SQLException;
     public void save(Connection conn, Account valueObject) throws NotFoundException, SQLException;
     public void delete(Connection conn, Account valueObject) throws NotFoundException, SQLException;
     public void deleteAll(Connection conn) throws SQLException;
     public int countAll(Connection conn) throws SQLException;
-    public List searchMatching(Connection conn, Account valueObject) throws SQLException;
+    public List<Account> searchMatching(Connection conn, Account valueObject) throws SQLException;
     public int databaseUpdate(Connection conn, PreparedStatement stmt) throws SQLException;
     public void singleQuery(Connection conn, PreparedStatement stmt, Account valueObject) throws NotFoundException, SQLException;
-    public List listQuery(Connection conn, PreparedStatement stmt) throws SQLException;
+    public List<Account> listQuery(Connection conn, PreparedStatement stmt) throws SQLException;
 }

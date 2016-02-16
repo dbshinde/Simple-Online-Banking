@@ -107,10 +107,10 @@ public class TransactionDAOImpl implements TransactionDAO{
      *
      * @param conn         This method requires working database connection.
      */
-    public List loadAll(Connection conn) throws SQLException {
+    public List<Transaction> loadAll(Connection conn) throws SQLException {
 
           String sql = "SELECT * FROM transaction ORDER BY transaction_id ASC ";
-          List searchResults = listQuery(conn, conn.prepareStatement(sql));
+          List<Transaction> searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
     }
@@ -318,9 +318,9 @@ public class TransactionDAOImpl implements TransactionDAO{
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Connection conn, Transaction valueObject) throws SQLException {
+    public List<Transaction> searchMatching(Connection conn, Transaction valueObject) throws SQLException {
 
-          List searchResults;
+          List<Transaction> searchResults;
 
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM transaction WHERE 1=1 ");
@@ -366,7 +366,7 @@ public class TransactionDAOImpl implements TransactionDAO{
           // Prevent accidential full table results.
           // Use loadAll if all rows must be returned.
           if (first)
-               searchResults = new ArrayList();
+               searchResults = new ArrayList<Transaction>();
           else
                searchResults = listQuery(conn, conn.prepareStatement(sql.toString()));
 
@@ -449,9 +449,9 @@ public class TransactionDAOImpl implements TransactionDAO{
      * @param conn         This method requires working database connection.
      * @param stmt         This parameter contains the SQL statement to be excuted.
      */
-    public List listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
+    public List<Transaction> listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
 
-          ArrayList searchResults = new ArrayList();
+          List<Transaction> searchResults = new ArrayList<Transaction>();
           ResultSet result = null;
 
           try {
@@ -478,7 +478,7 @@ public class TransactionDAOImpl implements TransactionDAO{
                   stmt.close();
           }
 
-          return (List)searchResults;
+          return searchResults;
     }
 
 

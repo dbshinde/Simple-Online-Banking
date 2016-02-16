@@ -111,10 +111,10 @@ public class BankBranchDAOImpl implements BankBranchDAO{
      *
      * @param conn         This method requires working database connection.
      */
-    public List loadAll(Connection conn) throws SQLException {
+    public List<BankBranch> loadAll(Connection conn) throws SQLException {
 
           String sql = "SELECT * FROM bank_branch ORDER BY bank_branch_id ASC ";
-          List searchResults = listQuery(conn, conn.prepareStatement(sql));
+          List<BankBranch> searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
     }
@@ -314,9 +314,9 @@ public class BankBranchDAOImpl implements BankBranchDAO{
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Connection conn, BankBranch valueObject) throws SQLException {
+    public List<BankBranch> searchMatching(Connection conn, BankBranch valueObject) throws SQLException {
 
-          List searchResults;
+          List<BankBranch> searchResults;
 
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM bank_branch WHERE 1=1 ");
@@ -347,7 +347,7 @@ public class BankBranchDAOImpl implements BankBranchDAO{
           // Prevent accidential full table results.
           // Use loadAll if all rows must be returned.
           if (first)
-               searchResults = new ArrayList();
+               searchResults = new ArrayList<BankBranch>();
           else
                searchResults = listQuery(conn, conn.prepareStatement(sql.toString()));
 
@@ -427,9 +427,9 @@ public class BankBranchDAOImpl implements BankBranchDAO{
      * @param conn         This method requires working database connection.
      * @param stmt         This parameter contains the SQL statement to be excuted.
      */
-    public List listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
+    public List<BankBranch> listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
 
-          ArrayList searchResults = new ArrayList();
+          List<BankBranch> searchResults = new ArrayList<BankBranch>();
           ResultSet result = null;
 
           try {
@@ -453,7 +453,7 @@ public class BankBranchDAOImpl implements BankBranchDAO{
                   stmt.close();
           }
 
-          return (List)searchResults;
+          return searchResults;
     }
 
 

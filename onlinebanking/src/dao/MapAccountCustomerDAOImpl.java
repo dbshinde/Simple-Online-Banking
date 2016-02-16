@@ -113,10 +113,10 @@ public class MapAccountCustomerDAOImpl implements MapAccountCustomerDAO{
      *
      * @param conn         This method requires working database connection.
      */
-    public List loadAll(Connection conn) throws SQLException {
+    public List<MapAccountCustomer> loadAll(Connection conn) throws SQLException {
 
           String sql = "SELECT * FROM map_account_customer ORDER BY map_id ASC ";
-          List searchResults = listQuery(conn, conn.prepareStatement(sql));
+          List<MapAccountCustomer> searchResults = listQuery(conn, conn.prepareStatement(sql));
 
           return searchResults;
     }
@@ -313,9 +313,9 @@ public class MapAccountCustomerDAOImpl implements MapAccountCustomerDAO{
      * @param valueObject  This parameter contains the class instance where search will be based.
      *                     Primary-key field should not be set.
      */
-    public List searchMatching(Connection conn, MapAccountCustomer valueObject) throws SQLException {
+    public List<MapAccountCustomer> searchMatching(Connection conn, MapAccountCustomer valueObject) throws SQLException {
 
-          List searchResults;
+          List<MapAccountCustomer> searchResults;
 
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM map_account_customer WHERE 1=1 ");
@@ -341,7 +341,7 @@ public class MapAccountCustomerDAOImpl implements MapAccountCustomerDAO{
           // Prevent accidential full table results.
           // Use loadAll if all rows must be returned.
           if (first)
-               searchResults = new ArrayList();
+               searchResults = new ArrayList<MapAccountCustomer>();
           else
                searchResults = listQuery(conn, conn.prepareStatement(sql.toString()));
 
@@ -420,9 +420,9 @@ public class MapAccountCustomerDAOImpl implements MapAccountCustomerDAO{
      * @param conn         This method requires working database connection.
      * @param stmt         This parameter contains the SQL statement to be excuted.
      */
-    public List listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
+    public List<MapAccountCustomer> listQuery(Connection conn, PreparedStatement stmt) throws SQLException {
 
-          ArrayList searchResults = new ArrayList();
+          List<MapAccountCustomer> searchResults = new ArrayList<MapAccountCustomer>();
           ResultSet result = null;
 
           try {
@@ -445,7 +445,7 @@ public class MapAccountCustomerDAOImpl implements MapAccountCustomerDAO{
                   stmt.close();
           }
 
-          return (List)searchResults;
+          return searchResults;
     }
 
 //-------------------------------------------------------------------------
