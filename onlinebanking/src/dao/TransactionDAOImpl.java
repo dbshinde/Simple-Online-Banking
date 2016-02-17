@@ -1,5 +1,7 @@
 package dao;
 
+import static helpers.Utils.isNotNullAndEmpty;
+
 import java.sql.*;
 import java.util.*;
 import java.math.*;
@@ -325,37 +327,37 @@ public class TransactionDAOImpl implements TransactionDAO{
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM transaction WHERE 1=1 ");
 
-          if (valueObject.getTransaction_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getTransaction_id()) && valueObject.getTransaction_id() != 0) {
               if (first) { first = false; }
               sql.append("AND transaction_id = ").append(valueObject.getTransaction_id()).append(" ");
           }
 
-          if (valueObject.getCustomer_id_by() != 0) {
+          if (isNotNullAndEmpty(valueObject.getCustomer_id_by()) && valueObject.getCustomer_id_by() != 0) {
               if (first) { first = false; }
               sql.append("AND customer_id_by = ").append(valueObject.getCustomer_id_by()).append(" ");
           }
 
-          if (valueObject.getAccount_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getAccount_id()) && valueObject.getAccount_id() != 0) {
               if (first) { first = false; }
               sql.append("AND account_id = ").append(valueObject.getAccount_id()).append(" ");
           }
 
-          if (valueObject.getAccount_id_to() != 0) {
+          if (isNotNullAndEmpty(valueObject.getAccount_id_to()) && valueObject.getAccount_id_to() != 0) {
               if (first) { first = false; }
               sql.append("AND account_id_to = ").append(valueObject.getAccount_id_to()).append(" ");
           }
 
-          if (valueObject.getTransaction_type() != 0) {
+          if (isNotNullAndEmpty(valueObject.getTransaction_type()) && valueObject.getTransaction_type() != 0) {
               if (first) { first = false; }
               sql.append("AND transaction_type = ").append(valueObject.getTransaction_type()).append(" ");
           }
 
-          if (valueObject.getTransaction_amount() != 0) {
+          if (isNotNullAndEmpty(valueObject.getTransaction_amount()) && valueObject.getTransaction_amount() != 0) {
               if (first) { first = false; }
               sql.append("AND transaction_amount = ").append(valueObject.getTransaction_amount()).append(" ");
           }
 
-          if (valueObject.getTransaction_time() != null) {
+          if (isNotNullAndEmpty(valueObject.getTransaction_time()) && valueObject.getTransaction_time() != null) {
               if (first) { first = false; }
               sql.append("AND transaction_time = '").append(valueObject.getTransaction_time()).append("' ");
           }
