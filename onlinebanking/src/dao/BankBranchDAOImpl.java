@@ -1,5 +1,7 @@
 package dao;
 
+import static helpers.Utils.isNotNullAndEmpty;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -321,22 +323,22 @@ public class BankBranchDAOImpl implements BankBranchDAO{
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM bank_branch WHERE 1=1 ");
 
-          if (valueObject.getBank_branch_id() != 0) {
+          if (isNotNullAndEmpty(valueObject.getBank_branch_id()) && valueObject.getBank_branch_id() != 0) {
               if (first) { first = false; }
               sql.append("AND bank_branch_id = ").append(valueObject.getBank_branch_id()).append(" ");
           }
 
-          if (valueObject.getName() != null) {
+          if (isNotNullAndEmpty(valueObject.getName()) && valueObject.getName() != null) {
               if (first) { first = false; }
               sql.append("AND name LIKE '").append(valueObject.getName()).append("%' ");
           }
 
-          if (valueObject.getLocation() != null) {
+          if (isNotNullAndEmpty(valueObject.getLocation()) && valueObject.getLocation() != null) {
               if (first) { first = false; }
               sql.append("AND location LIKE '").append(valueObject.getLocation()).append("%' ");
           }
 
-          if (valueObject.getDescription() != null) {
+          if (isNotNullAndEmpty(valueObject.getDescription()) && valueObject.getDescription() != null) {
               if (first) { first = false; }
               sql.append("AND description LIKE '").append(valueObject.getDescription()).append("%' ");
           }

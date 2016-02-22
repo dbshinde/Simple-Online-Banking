@@ -1,5 +1,7 @@
 package dao;
 
+import static helpers.Utils.isNotNullAndEmpty;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -139,7 +141,7 @@ public class AccountTypeDAOImpl implements AccountTypeDAO{
           boolean first = true;
           StringBuffer sql = new StringBuffer("SELECT * FROM account_type WHERE 1=1 ");
 
-          if (valueObject.getAccount_typeId() != 0) {
+          if (isNotNullAndEmpty(valueObject.getAccount_typeId()) && valueObject.getAccount_typeId() != 0) {
               if (first) { first = false; }
               sql.append("AND account_typeId = ").append(valueObject.getAccount_typeId()).append(" ").append("AND status = 'active'");
           }
