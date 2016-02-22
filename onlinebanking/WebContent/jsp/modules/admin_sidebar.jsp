@@ -5,6 +5,9 @@
 			href="${page.url_host}${page.url_apppath}admin/customer/list">Customer
 				List</a></li>
 		<li><a class="btn btn-primary btn-large"
+			href="${page.url_host}${page.url_apppath}admin/account/list">Account
+		List</a></li>
+		<li><a class="btn btn-primary btn-large"
 			href="${page.url_host}${page.url_apppath}admin/customer/search">Search
 				Customer</a></li>
 		<li><a class="btn btn-primary btn-large"
