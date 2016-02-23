@@ -2,24 +2,26 @@
 
 <table class="table table-hover" style="table-layout: fixed;">
 	<thead>
-		<th>Account ID</th>
-		<th>Balance</th>
-		<th>Account Type</th>
-		<th>Branch Id</th>
-		<th>Branch Name</th>
+		<th style="text-align: center; width: 100px;">Account ID</th>
+		<th style="text-align: center; width: 100px;">Balance</th>
+		<th style="text-align: center; width: 100px;">Account Type</th>
+		<th style="text-align: center; width: 100px;">Branch Id</th>
+		<th style="text-align: center; width: 100px;">Branch Name</th>
+		<th style="text-align: center; width: 100px;"></th>
+		<th style="text-align: center; width: 100px;"></th>
 	</thead>
 	<tbody>
 		<c:forEach items="${data}" var="account">
 			<tr>
-				<td>${account.account_id}</td>
-				<td style="width: 100px">${account.amount}</td>
-				<td>${account.account_type.account_type}</td>
-				<td>${account.bank_branch_id}</td>
-				<td>${account.bank_branch.name}</td>
-				<td><a class="btn btn-small"
-					style="width: 50px; margin-bottom: 5px;"
+				<td style="text-align: center; width: 100px;">${account.account_id}</td>
+				<td style="text-align: center; width: 100px;">${account.amount}</td>
+				<td style="text-align: center; width: 100px;">${account.account_type.account_type}</td>
+				<td style="text-align: center; width: 100px;">${account.bank_branch_id}</td>
+				<td style="text-align: center; width: 100px;">${account.bank_branch.name}</td>
+				<td style="text-align: right; width: 100px;"><a class="btn btn-small" style="width: 50px; margin-bottom: 5px;"
 					href="${page.url_host}${page.url_apppath}admin/account/edit/${account.account_id}">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
-					<a class="btn btn-small" style="width: 50px;margin-bottom: 5px;"
+				</td>
+				<td style="text-align: center; width: 100px;"><a class="btn btn-small" style="width: 50px;margin-bottom: 5px;"
 					href="${page.url_host}${page.url_apppath}admin/account/details/${account.account_id}">Details</a>
 				</td>
 			</tr>

@@ -5,7 +5,7 @@
 			<a data-target=".nav-collapse" data-toggle="collapse"
 				class="btn btn-navbar"> <span class="icon-bar"></span> <span
 				class="icon-bar"></span> <span class="icon-bar"></span>
-			</a> <a href="#" class="brand">Bank of Team 6A</a>
+			</a> <a href="${page.url_host}${page.url_apppath}admin/dashboard" class="brand">Bank of Team 6A</a>
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li><a
