@@ -49,7 +49,7 @@ CREATE TABLE `account_type` (
   `account_typeId` int(11) NOT NULL AUTO_INCREMENT,
   `account_type` varchar(45) DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`account_id`),
+  PRIMARY KEY (`account_typeId`),
   UNIQUE KEY `bank_accountTypes_UNIQUE` (`account_typeId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23185 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -59,7 +59,7 @@ INSERT INTO `team6a_banking`.`account_type`
 `status`)
 VALUES
 ( 1,'Checking','active'),
-( 1,'Saving','active');
+( 2,'Saving','active');
 
 
 DROP TABLE IF EXISTS `account`;
